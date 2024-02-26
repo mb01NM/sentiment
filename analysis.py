@@ -38,11 +38,11 @@ finbert_accuracy = accuracy_score(actual_sentiments, finbert_predictions)
 lxyuan_f1 = f1_score(actual_sentiments, lxyuan_predictions, average='weighted')
 finbert_f1 = f1_score(actual_sentiments, finbert_predictions, average='weighted')
 
-lxyuan_cm = confusion_matrix(actual_sentiments, lxyuan_predictions)
-finbert_cm = confusion_matrix(actual_sentiments, finbert_predictions)
+lxyuan_cm = confusion_matrix(actual_sentiments, lxyuan_predictions, labels=["positive", "neutral", "negative"])
+finbert_cm = confusion_matrix(actual_sentiments, finbert_predictions, labels=["positive", "neutral", "negative"])
 
 # Print results
-print(f"Lxyuan Model - Accuracy: {lxyuan_accuracy}, F1 Score: {lxyuan_f1}, Time: {lxyuan_time}")
-print(f"Finbert Model - Accuracy: {finbert_accuracy}, F1 Score: {finbert_f1}, Time: {finbert_time}")
+print(f"Lxyuan Model - Accuracy: {lxyuan_accuracy}, F1 Score: {lxyuan_f1}, Time: {round(lxyuan_time, 2)} seconds")
+print(f"Finbert Model - Accuracy: {finbert_accuracy}, F1 Score: {finbert_f1}, Time: {round(finbert_time, 2)} seconds")
 print(f"Lxyuan Model - Confusion Matrix: \n{lxyuan_cm}")
 print(f"Finbert Model - Confusion Matrix: \n{finbert_cm}")
